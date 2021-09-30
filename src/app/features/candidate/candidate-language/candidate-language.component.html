@@ -1,0 +1,126 @@
+<div class="card mb-3">
+    <img src="https://cdn.discordapp.com/attachments/876229287307542581/891668072237244437/1_nNxybrXr-YPikYvaXyDbkQ_1.jpeg" 
+      class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Dil Bilgileri</h5>
+      <p class="card-text">Dil Bilgilerinizi Girerek CV'nizi güçlendirin</p>
+      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal6">
+        Dil Bilgisi Ekle
+      </button>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <form [formGroup]="candidateLanguageForm">
+            <div class="mb-3">
+                <label>Dil</label>
+                <select  class="form-select" formControlName="languageId" >
+                  <option value="" disabled>Languages </option>
+                   <option *ngFor="let language of languages" [ngValue]="language.id" >{{language.name}}</option>  
+                </select>
+            </div>
+            <div class="mb-3">
+              <label>Dil</label>
+              <select  class="form-select" formControlName="languageLevel" >
+                <option value="" disabled>language Level </option>
+                 <option *ngFor="let language of languageLevels"  >{{language.level}}</option>  
+              </select>
+          </div>
+           
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <button type="button" (click)="add()" class="btn btn-primary">Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card my-4 border-bottom-0">
+    <div class="card-header text-center fw-bold">Current Languages</div>
+
+    <p-table
+    *ngIf="loading == false; else loadingInfo"
+    id="myTable2"
+    #dt
+    [value]="candidateLanguages"
+    dataKey="id"
+    styleClass="p-datatable-striped"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <div class="text-center">
+              Language
+            </div>
+          </th>
+          <th>
+            <div class="text-center">
+              level
+            </div>
+          </th>
+          <th>
+            <div class="text-center">
+              Remove
+            </div>
+          </th>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-language>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">Language</span>
+            <div class="text-center">
+              {{language.language.name}}
+            </div>
+            
+          </td>
+
+          <td>
+            
+            <span class="p-column-title">level</span>
+            <div class="text-center">
+            {{language.languageLevel }}
+          </div>
+          </td>
+         
+          <td>
+            <div class="text-center">
+            <button class="p-button-sm p-button-rounded p-button-danger mt-2" (click)="deleteLanguage(language.id)" pButton type="button"
+              icon="pi pi-times"></button>
+            </div>
+          </td>
+        
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No Experience found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >

@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-3">
+      <app-side-menu></app-side-menu>
+    </div>
+    <div class="col-md-9">
+<div class="container">
+    <div class="content">
+        <div class="col-md-12">
+            <form [formGroup]="jobPositionAddForm">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input class="form-control" type="text" formControlName="title" placeholder="title" />
+                    <!-- <small *ngIf="jobPositionAddForm.get('title').hasError('required') && jobPositionAddForm.get('title').touched" class="form-text text-muted" >
+                        Title Zorunludur
+                    </small> -->
+                </div>
+                <button [disabled]="!jobPositionAddForm.valid"  class="btn btn-primary btn-fill" (click)="add()">pozisyon ekle</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-md-3">
+    <app-side-menu></app-side-menu>
+
+  </div>
+  <div class="col-md-9">
+    <div class="container">
+      <div style="margin-top: 100px;">
+        <p-accordion [multiple]="true">
+          <div class="text-center text-uppercase">
+            <h3>{{ loggedCandidate.firstName }} {{ loggedCandidate.lastName }} CV BİLGİLERİ</h3>
+          </div>
+
+          <p-accordionTab header="Kişisel Bilgiler">
+            {{ loggedCandidate.firstName }} {{ loggedCandidate.lastName }}
+            <p class="card-text">
+              Cover Letter:
+              <span class="fw-bold">{{ loggedCandidate.cvs[0].coverLetter }}</span>
+            </p>
+            <img width="128" height="128" class="rounded-circle m-2 border border-5"
+              src="{{ loggedCandidate.images[1].imageUrl}}" />
+
+            <p class="card-text">
+              Age:
+              <span class="fw-bold">{{
+                getCurrentYear() - loggedCandidate.birthYear
+                }}</span>
+            </p>
+            <p class="card-text">
+              Email: <span class="fw-bold">{{ loggedCandidate.email }}</span>
+            </p>
+          </p-accordionTab>
+          <p-accordionTab header="Eğitim Bilgileri">
+            <p *ngFor="let school of candidateSchools" class="card-text">
+              <span class="fw-bold">{{ school.department.name }}</span> at
+              <span class="fw-bold">{{ school.school.name }} </span>
+              <span class="small text-secondary">({{ school.startYear }} - </span>
+              <span class="small text-secondary" *ngIf="school.graduationYear">
+                {{ school.graduationYear }})</span>
+              <span class="small text-secondary" *ngIf="!school.graduationYear">Present</span>
+            </p>
+          </p-accordionTab>
+          <p-accordionTab header="Diller ">
+            <p class="card-text">
+              Languages:
+              <span *ngFor="let lang of candidateLanguages" class="fw-bold">{{ lang.language.name }}
+                <span class="text-secondary small">({{ lang.languageLevel }})
+                </span>
+              </span>
+            </p>
+          </p-accordionTab>
+          <p-accordionTab header="Yetenekler">
+            <p *ngFor="let skill of candidateSkills" class="card-text">
+              <span class="fw-bold">{{ skill.skill.name }}</span>
+            </p>
+          </p-accordionTab>
+          <p-accordionTab header="Github ve Linkedin Adresleri">
+            <p class="card-text">
+              LinkedIn:
+              <a target="_blank" class="link-dark" href="{{ loggedCandidate.linkedinAccount }}"><span class="fw-bold">{{
+                  loggedCandidate.linkedinAccount
+                  }}</span></a>
+            </p>
+            <p class="card-text">
+              Github:
+              <a target="_blank" class="link-dark" href="{{ loggedCandidate.githubAccount }}"><span class="fw-bold">{{
+                  loggedCandidate.githubAccount }}</span></a>
+            </p>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+  </div>
+</div>

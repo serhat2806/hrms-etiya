@@ -1,0 +1,109 @@
+<!-- 
+<div *ngFor="let cvs of cv">
+  {{cvs.title}}
+</div> -->
+
+<div class="row">
+  <div class="col-md-3">
+    <app-side-menu></app-side-menu>
+
+  </div>
+  <div class="col-md-9">
+
+    <div class="container">
+      <h2 style="margin-top: 30px;">CV nizi Oluşturun</h2>
+
+      <form [formGroup]="cvAddForm">
+
+        <div class="mb-3">
+          <label>CV Title</label>
+          <input type="text" placeholder="cvTitle" formControlName="title" class="form-control" />
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-text">cover letter</span>
+          <textarea class="form-control" aria-label="With textarea" formControlName="coverLetter"></textarea>
+        </div>
+
+        <div class="card-footer">
+          <button [disabled]="!cvAddForm.valid" (click)="cvAdd()" class="btn btn-primary">
+            Cv yi Oluştur
+          </button>
+        </div>
+      </form>
+      <p-table *ngIf="loading == false; " id="myTable" #dt [value]="cv" dataKey="id" styleClass="p-datatable-striped"
+        [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [filterDelay]="0">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>
+              <div class="d-flex justify-content-between align-items-center">
+                Cv Title
+              </div>
+            </th>
+            <th>
+              <div class="d-flex justify-content-between align-items-center">
+                Update Cv Title
+              </div>
+            </th>
+            <th>
+              <div class="d-flex justify-content-between align-items-center">
+                Cover Letter
+              </div>
+            </th>
+            <th>
+              <div class="d-flex justify-content-between align-items-center">
+                Update Cv Letter
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cv>
+          <tr class="p-selectable-row">
+            <td>
+              <span class="p-column-title">Title</span>
+              {{cv.title}}
+            </td>
+            <td>
+              <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                class="p-button-sm p-button-rounded p-button-danger mt-2 " pButton type="button" icon="pi pi-times"
+                (click)="catchCvId(cv.id)"></button>
+            </td>
+            <td>
+              <span class="p-column-title">CoverLetter</span>
+              {{cv.coverLetter}}
+            </td>
+            <td>
+              <button data-bs-toggle="offcanvas" data-bs-target="#letterCanvas" aria-controls="letterCanvas"
+                class="p-button-sm p-button-rounded p-button-danger mt-2 " pButton type="button" icon="pi pi-times"
+                (click)="catchCvId(cv.id)"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+
+
+
+
+
+
+      <app-candidate-image></app-candidate-image>
+      <app-candidate-school></app-candidate-school>
+      <app-candidate-skill></app-candidate-skill>
+      <app-candidate-language></app-candidate-language>
+      <app-candidate-experience></app-candidate-experience>
+      <div class="row">
+        <div class="col-md-6">
+          <app-candidate-linkedin></app-candidate-linkedin>
+        </div>
+        <div class="col-md-6">
+          <app-candidate-github></app-candidate-github>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-update-cv-title [catchCvId]="catchCvIdValue"></app-update-cv-title>
+  <app-update-cv-letter [catchCvId]="catchCvIdValue"></app-update-cv-letter>

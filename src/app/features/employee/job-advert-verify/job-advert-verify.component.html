@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-3">
+    <app-side-menu></app-side-menu>
+  </div>
+  <div class="col-md-9">
+<div class="container">
+<div class="text-center">
+    <main class="form">
+        <form [formGroup]="updateForm">        
+          <div class="form-floating">
+            <input formControlName="verified"  type="text" class="form-control"  placeholder="verified">
+            <label for="floatingPassword">verify</label>
+          </div>       
+          <button (click)="update()" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>   
+        </form>
+      </main>
+    </div>
+  </div>
+  </div>
+</div>

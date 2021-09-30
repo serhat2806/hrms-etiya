@@ -1,0 +1,17 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="letterCanvas" aria-labelledby="letterCanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="letterCanvasLabel">Update</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form class="row g-3" [formGroup]="updateCoverLetterForm">
+            <div class="col-12">
+                <label for="coverLetter" class="form-label" >Update Cover Letter</label>
+                <input id="coverLetter" type="text" class="form-control" placeholder="cover letter" formControlName="coverLetter"/>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" [disabled]="!updateCoverLetterForm.valid" type="submit" (click)="updateCoverLetter()">Düzenle</button>
+            </div>
+        </form>
+    </div>
+  </div>

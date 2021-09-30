@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-md-3">
+    <app-side-menu></app-side-menu>
+
+  </div>
+  <div class="col-md-9">
+
+    <div class="container" style="padding-top: 20px;">
+      <div class="text-center">
+        <div class="row">
+
+ 
+          <div class="col-md-9 border rounded-3 p-2">
+              <ng-container *ngIf="loading===false; else loadingInfo">
+                  <p-table #dt [value]="unverifiedJobAdvertisements" dataKey="id" styleClass="p-datatable-sm"
+                      [rowHover]="true" [rows]="10" [showCurrentPageReport]="false" [rowsPerPageOptions]="[10,20,50,100]"
+                      [paginator]="true" [filterDelay]="0">
+                      <ng-template pTemplate="header">
+                          <tr>
+                              <th pSortableColumn="employer.companyName">
+                                  <div class="p-d-flex p-jc-between p-ai-center">
+                                      İş Veren
+                                      <p-sortIcon field="employer.companyName"></p-sortIcon>
+                                      <p-columnFilter type="text" field="employer.companyName" display="menu"
+                                          class="p-ml-auto">
+                                      </p-columnFilter>
+                                  </div>
+                              </th>
+                              <th pSortableColumn="city.name">
+                                  <div class="p-d-flex p-jc-between p-ai-center">
+                                      Şehir
+                                      <p-sortIcon field="city.name"></p-sortIcon>
+                                  </div>
+                              </th>
+        
+                              <th pSortableColumn="position.title">
+                                  <div class="p-d-flex p-jc-between p-ai-center">
+                                      Pozisyon
+                                      <p-sortIcon field="position.title"></p-sortIcon>
+                                  </div>
+                              </th>
+                              <th pSortableColumn="openPositions">
+                                  <div class="p-d-flex p-jc-between p-ai-center">
+                                      Açık Pozisyon
+                                      <p-sortIcon field="openPositions"></p-sortIcon>
+                                  </div>
+                              </th>
+                              <th pSortableColumn="createdAt">
+                                  <div class="p-d-flex p-jc-between p-ai-center">
+                                      Oluşturulma Tarihi
+                                      <p-sortIcon field="createdAt"></p-sortIcon>
+                                  </div>
+                              </th>
+                              <th pSortableColumn="deadline">
+                                  <div class="p-d-flex p-jc-between p-ai-center">
+                                      Son Başvuru Tarihi
+                                      <p-sortIcon field="deadline"></p-sortIcon>
+                                  </div>
+                              </th>
+                              <th style="width: 3.5rem"></th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-jobAdvertisement>
+                          <tr class="p-selectable-row">
+                              <td class="text-capitalize">
+                                  {{jobAdvertisement.employer.companyName}}
+                              </td>
+                              <td class="text-capitalize">
+                                  {{jobAdvertisement.city.name}}
+                              </td>
+                              <td class="text-capitalize">
+                                  {{jobAdvertisement.position.title}}
+                              </td>
+                              <td>
+                                  {{jobAdvertisement.openPositions}}
+                              </td>
+                              <td>
+                                  {{jobAdvertisement.createdAt | date: 'MM/dd/yyyy'}}
+                              </td>
+                              <td>
+                                  {{jobAdvertisement.deadline | date: 'MM/dd/yyyy'}}
+                              </td>
+                              <td>
+                                  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                      data-bs-target="#staticBackdrop" (click)="catchId(jobAdvertisement.id)">
+                                      <i class="bi bi-check-lg"></i></button>
+                                      
+                                  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                      data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                      aria-hidden="true">
+                                      <div class="modal-dialog modal-dialog-centered">
+                                          <div class="modal-content">
+                                              <div class="modal-header">
+                                                  <h5 class="modal-title text-uppercase" id="staticBackdropLabel">
+                                                      İş İlanı Onaylama</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                      aria-label="Close"></button>
+                                              </div>
+                                              <div class="modal-body text-start">
+                                                  İş ilanını onaylamak istediğinize emin misiniz?
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-light"
+                                                      data-bs-dismiss="modal">Vazgeç</button>
+                                                  <button (click)="updateJobAdvertisementVerification(jobAdvertisement)" type="button"
+                                                      class="btn btn-success" data-bs-dismiss="modal">Onayla</button>
+                                                     
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </td>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                          <tr>
+                              <td colspan="8">Veri mevcut değil.</td>
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </ng-container>
+          </div>
+        </div>
+        
+        <ng-template #loadingInfo>
+          <div class="text-center m-5">
+              <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Yükleniyor...</span>
+              </div>
+          </div>
+        </ng-template>
+    </div>
+  </div>
+</div>

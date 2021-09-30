@@ -1,0 +1,29 @@
+
+   
+   <div class="col-md-9">
+            <button pButton pRipple type="button" label="Update" styleClass="p-button-sm"
+            class="p-button-raised p-button-success p-button-text p-button-sm" data-bs-toggle="modal"
+            data-bs-target="#modal6"></button>
+        <div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <form [formGroup]="hrmsLastNameUpdateForm">
+                            <div class="mb-3">
+                                <label>Lastname</label>
+                                <input type="text" placeholder="lastName" formControlName="lastName"
+                                    class="form-control" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" class="btn btn-primary "(click)="updateLastName()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+           

@@ -1,0 +1,42 @@
+<div class="text-center">
+  <div class="row align-items-end">
+    <div class="col-md-3 offset-md-4">
+    <main class="form-signin">
+        <form [formGroup]="employerSignForm">
+          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+          <div class="form-floating">
+            <input formControlName="companyName"   type="email" class="form-control" id="floatingInput" placeholder="Company name">
+            <label for="floatingInput">Company Name</label>
+          </div>
+          <div class="form-floating">
+            <input formControlName="website"  type="text" class="form-control" id="floatingInput" placeholder="website">
+            <label for="floatingPassword">website</label>
+          </div>
+          <div class="form-floating">
+            <input formControlName="email"  type="text" class="form-control" id="floatingPassword" placeholder="email">
+            <label for="floatingPassword">email</label>
+          </div>
+          <div class="form-floating">
+            <input formControlName="phoneNumber"  type="number" class="form-control" id="floatingPassword" placeholder="phone number">
+            <label for="floatingPassword">Phone Number</label>
+          </div>
+          <div class="form-floating">
+            <input formControlName="password" [(ngModel)]="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="form-floating">
+            <input formControlName="verifyPassword"  [(ngModel)]="verifyPassword" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password Again</label>
+          </div>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button (click)="addEmployer()" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        </form>
+      </main>
+    </div>
+  </div>
+</div>

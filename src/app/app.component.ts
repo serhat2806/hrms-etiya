@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'hrmsSon';
+  title = 'hrms';
+  loggedUser:any
+
+
+  changenavi(){
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser
+  }
+
+  
+
 }

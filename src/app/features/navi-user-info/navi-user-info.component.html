@@ -1,0 +1,19 @@
+<div class="d-flex">
+  <div *ngIf="userId=='employer'">
+    <p
+      style="color: wheat; padding-right: 100px; text-transform: capitalize;padding-top: 5px; font-size: larger;margin-top: 10px;">
+      Welcome {{userInfo.companyName}} </p>
+    <div style="padding-left: 100px;">
+
+    </div>
+
+  </div>
+
+  <div *ngIf="userId=='candidate'">
+    <p style="color: wheat;">Welcome {{userInfo.firstName}} {{userInfo.lastName}} </p>
+  </div>
+
+  <div *ngIf="userId=='systemEmployee'">
+    <p style="color: wheat;">Welcome {{userInfo.firstName}} {{userInfo.lastName}}</p>
+  </div>
+</div>

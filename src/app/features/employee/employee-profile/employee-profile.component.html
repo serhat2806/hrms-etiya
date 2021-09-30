@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-3">
+    <app-side-menu></app-side-menu>
+
+  </div>
+  <div class="col-md-8">
+   
+      <div style="margin-top: 100px;">
+        <p-accordion [multiple]="true" >
+           <div class="text-center text-uppercase">
+               <h3> Profil </h3> 
+           </div>
+          
+           <p-accordionTab header="Kişisel Bilgiler">
+              
+              <p class="card-text">
+                Firstname:
+                 <span class="fw-bold"> {{user().firstName}} <app-update></app-update></span>
+               </p>
+         
+               <p class="card-text">
+               lastName:
+                 <span class="fw-bold"> {{user().lastName}} 
+                  </span>
+                  <app-update-employee-last-name></app-update-employee-last-name>
+               </p>
+               <p class="card-text">
+                 Email: <span class="fw-bold">{{user().email}}</span>
+               </p>
+          </p-accordionTab>
+          <p-accordionTab header="Onaylanmamış İş İlanları">
+            <app-apply-changes></app-apply-changes>
+            
+        </p-accordionTab>
+          
+        
+        </p-accordion>
+        </div>
+  </div>
+</div>

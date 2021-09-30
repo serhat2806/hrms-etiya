@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-3">
+    <app-side-menu></app-side-menu>
+  </div>
+  <div class="col-md-9">
+    <div class="container">
+      <div class="text-center">
+        <main class="form-signin">
+          <form [formGroup]="updatecompanyNameForm">
+
+            <div class="form-floating">
+              <input formControlName="companyName" type="email" class="form-control" id="floatingInput"
+                placeholder="Company name">
+              <label for="floatingInput">Company Name</label>
+            </div>
+            <button (click)="updateCompanyName()" class="w-100 btn btn-lg btn-primary" type="submit">update</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+          </form>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
