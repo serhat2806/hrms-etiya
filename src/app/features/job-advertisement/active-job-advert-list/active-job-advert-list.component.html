@@ -107,7 +107,7 @@
               {{ job.deadline | date: "MMMM d, y" }}
     
              
-                <td  *ngIf="user==true "  class="text-center" >
+                <td   class="text-center" >
                  <ng-container *ngIf="checkFavJob(job.id)===false;else addFav">
                    <button (click)="addToFavs(job)" type="button" class="btn btn-outline-primary rounded-5" > <i class="bi bi-star"></i></button>
                  </ng-container>
@@ -116,7 +116,10 @@
                   <button (click)="removeFavs(job.id)" type="button" class="btn btn-outline-primary rounded-5" > <i class="bi bi-star-fill"></i></button>
                  </ng-template>
         
-    
+                </td>
+                <td *ngIf="user">
+                  <button></button>
+                </td>
           </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">

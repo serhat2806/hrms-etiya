@@ -1,27 +1,56 @@
+<!-- 
 
-    <div class="col-md-9">
+<div class="col-md-9">
+   <thead>
+       <tr>
+          <th>First Name</th> 
+       </tr>
+   </thead>
+   <tbody>
+       <tr>
+           <td>{{user().firstName}}.text-uppercase</td>
+       </tr>
+   </tbody>
 
 
-        <button pButton pRipple type="button" label="Update" styleClass="p-button-sm"
-            class="p-button-raised p-button-success p-button-text p-button-sm" data-bs-toggle="modal"
-            data-bs-target="#modal6"></button>
-        <div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <form [formGroup]="hrmsFirstNameUpdateForm">
-                            <div class="mb-3">
-                                <label>Firstname</label>
-                                <input type="text" placeholder="firstName" formControlName="firstName"
-                                    class="form-control" />
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-                        <button type="button" class="btn btn-primary " (click)="updateFirstName()">Update</button>
-                    </div>
+    <div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <form [formGroup]="hrmsFirstNameUpdateForm">
+                        <div class="mb-3">
+                            <label>Firstname</label>
+                            <input type="text" placeholder="firstName" formControlName="firstName"
+                                class="form-control" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-primary " (click)="updateFirstName()">Upate</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- 
+ <div class="mb-3">
+     <form [formGroup]="hrmsFirstNameUpdateForm">
+    <label for="hrmsFirstNameUpdateForm" class="form-label">Example label</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+</form>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Another label</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+  </div> --> 
+
+
+  <form [formGroup]="hrmsFirstNameUpdateForm">
+    <div class="mb-3">
+        <label >First Name</label>
+    <input type="text" class="form-control" id="formGroupExampleInput"formControlName="firstName" placeholder="{{user.firstName}}">
+    </div>
+    
+    <button type="button" class="btn btn-primary "(click)="updateFirstName()">Update</button>
+  </form>

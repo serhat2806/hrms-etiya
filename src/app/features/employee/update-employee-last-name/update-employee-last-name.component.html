@@ -1,5 +1,14 @@
+<!-- <thead>
+    <tr>
+       <th>First Name</th> 
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>{{user().firstName}}</td>
+    </tr>
+</tbody>
 
-   
    <div class="col-md-9">
             <button pButton pRipple type="button" label="Update" styleClass="p-button-sm"
             class="p-button-raised p-button-success p-button-text p-button-sm" data-bs-toggle="modal"
@@ -23,7 +32,15 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-
-           
+    
+    <form [formGroup]="hrmsLastNameUpdateForm">
+        <div class="mb-3">
+            <label>Lastname</label>
+            <input type="text" placeholder="{{user.lastName}}" formControlName="lastName"
+                class="form-control" />
+        </div>
+        
+       <button type="button" class="btn btn-primary "(click)="updateLastName()">Update</button>
+      </form>

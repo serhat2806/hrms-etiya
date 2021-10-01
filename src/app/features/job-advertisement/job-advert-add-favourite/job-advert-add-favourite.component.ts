@@ -21,6 +21,7 @@ export class JobAdvertAddFavouriteComponent implements OnInit {
   loading:boolean=true
   loggedCandidate:any
   ngOnInit(): void {
+    
     this.getFavs()
     this.id=this.userService.getEmployer().id
     console.log(this.id)
@@ -42,8 +43,10 @@ export class JobAdvertAddFavouriteComponent implements OnInit {
   }
 
   removeFavs(jobId: number){
+    console.log("lkdshfkjasfdh")
     this.candidateService.removeFavoriteJob(this.loggedCandidate,jobId).subscribe(data=>{
       this.toastrService.warning("Removed")
+
     })
   }
   // getCandidateById() {

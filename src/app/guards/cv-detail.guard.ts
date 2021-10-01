@@ -18,7 +18,7 @@ export class CvDetailGuard implements CanActivate {
       let user = JSON.parse(localStorage.getItem("user"))
       console.log(user)
       let employer = user.message
-      if (user) {
+      if (employer.includes("candidate")) {
 
         return true
 

@@ -16,8 +16,9 @@ export class ActiveJobAdvertListComponent implements OnInit {
   activeJobAdverts: JobAdvertisement[] = []
   candidate: any
   id:number
-  user:boolean=false
+  userCheck:boolean=false
   message:any
+  user:any
   favs: JobAdvertisement[] = []
   loading: boolean = true
   constructor
@@ -58,13 +59,26 @@ export class ActiveJobAdvertListComponent implements OnInit {
   checkUser(){
    if( JSON.parse(localStorage.getItem('user'))){
      this.message= JSON.parse(localStorage.getItem('user')).message
-     if(this.message.includes("candidate"))
+     if(this.message.includes("employer"))
      {
-       this.user=true
+       this.user==="employer"
+       return this.user
      }
+     if(this.message.includes("candidate")){
+      
+      this.user==="candidate"
+       return this.user
+     }
+     if(this.message.includes("systemEmployee")){
+       
+      this.user==="systemEmployee"
+       return this.user
+     }
+
+
     
    }
-   return this.user=false
+  
    
   }
   

@@ -14,6 +14,7 @@ export class UpdateComponent implements OnInit {
   hrmsFirstNameUpdateForm:FormGroup
   hrmsLastNameUpdateForm: FormGroup
   userId: any
+  user:any
 
   
   constructor(private employeeService:EmployeeService,
@@ -24,6 +25,7 @@ export class UpdateComponent implements OnInit {
   ngOnInit(): void {
     this.getCandidataId()
     this.createUpdateFirstName()
+    this.User()
 
 
   }
@@ -70,7 +72,11 @@ export class UpdateComponent implements OnInit {
     console.log(this.userId.data.id)
     return this.userId.data.id
   }
-  
 
+  
+  User(){
+    this.user =this.userService.getEmployer()
+    return this.user
+  }
 
 }

@@ -26,7 +26,7 @@ export class UpdatePhoneNumberComponent implements OnInit {
       phoneNumber: ["", Validators.required]
     })
   }
-
+  
 
   update() {
     if (this.updateForm.valid) {

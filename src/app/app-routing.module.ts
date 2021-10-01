@@ -63,7 +63,8 @@ const routes: Routes = [
   {path:"employeeProfile",component:EmployeeProfileComponent,canActivate:[EmployeeProfileGuard]},
   {path:"approval",component:ApplyChangesComponent,canActivate:[ApplychangesGuard]},
   {path:"favs",component:JobAdvertAddFavouriteComponent,canActivate:[FavAdvertAddGuard]},
-  {path:"employerAdvertList",component:EmployerAdvertComponent,canActivate:[EmployerAdvertListGuard]}
+  {path:"employerAdvertList",component:EmployerAdvertComponent,canActivate:[EmployerAdvertListGuard]},
+  {path:"fav",component:JobAdvertAddFavouriteComponent}
   
   
   

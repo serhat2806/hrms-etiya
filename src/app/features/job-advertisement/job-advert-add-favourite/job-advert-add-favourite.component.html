@@ -109,7 +109,7 @@
       
           </td>
      
-          <td><button type="button"  class="btn btn-outline-danger rounded-5">  <i class="bi bi-x-lg"></i></button></td>
+          <td><button type="button" (click)="removeFavs(job.id)" class="btn btn-outline-danger rounded-5"> {{job.id}} <i class="bi bi-x-lg"></i></button></td>
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

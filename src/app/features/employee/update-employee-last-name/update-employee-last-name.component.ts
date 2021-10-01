@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/user/user';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-employee-last-name',
@@ -12,7 +14,8 @@ export class UpdateEmployeeLastNameComponent implements OnInit {
 
   hrmsLastNameUpdateForm: FormGroup
   userId: any
-  constructor(private employeeService: EmployeeService,
+  user:any
+  constructor(private employeeService: EmployeeService,private userService:UserService,
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,) { }
 
@@ -20,6 +23,7 @@ export class UpdateEmployeeLastNameComponent implements OnInit {
 
     this.getCandidataId()
     this.createUpdateFirstName()
+    this.User()
 
   }
 
@@ -61,5 +65,13 @@ export class UpdateEmployeeLastNameComponent implements OnInit {
     }
 
   }
+
+   
+  User(){
+    this.user =this.userService.getEmployer()
+    return this.user
+  }
+
+
 
 }
